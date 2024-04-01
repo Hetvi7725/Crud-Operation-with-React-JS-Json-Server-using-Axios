@@ -144,9 +144,9 @@ function Addview(){
             setusererr({...usererr,["phone"]:""});
             setusererr({...usererr,["image"]:""});
 
-            axios.get("http://localhost:3000/users/?email="+user.emil)
+            axios.get("http://localhost:3000/users/?email="+user.email)
             .then((res)=>{
-                if(res.data.length>0)
+                if(res.data.length==0)
                 {
                     if(iddata==0)
                     {
@@ -258,7 +258,7 @@ function Addview(){
                             Image
                         </Form.Label>
                         <Col sm="10">
-                            <Form.Control type="text" placeholder="Enter Image Link" name="image" onChange={(e)=>getinput(e)}/>
+                            <Form.Control type="text" placeholder="Enter Image Link" name="image" value={user.image?user.image:"} onChange={(e)=>getinput(e)}/>
                             <span style={{color:"red"}}>{usererr.image?usererr.image:""}</span>
                         </Col>
                     </Form.Group>
